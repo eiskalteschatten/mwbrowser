@@ -2,15 +2,13 @@ import { AnyAction, applyMiddleware, combineReducers, compose, createStore } fro
 import thunk, { ThunkDispatch } from 'redux-thunk';
 
 import app, { AppState } from './reducers/appReducer';
-import preferences, { PreferencesState } from './reducers/preferencesReducer';
 
 const devExtension = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
 
 const composeEnhancers = devExtension && process.env.NODE_ENV === 'development' ? devExtension : compose;
 
 const reducer = combineReducers({
-  app,
-  preferences
+  app
 });
 
 const store = createStore(
@@ -21,7 +19,6 @@ const store = createStore(
 );
 
 export interface State {
-  preferences: PreferencesState;
   app: AppState;
 }
 
