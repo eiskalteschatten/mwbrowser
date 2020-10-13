@@ -24,9 +24,9 @@
     "eject": "react-scripts eject"
   },
   "build": {
-    "productName": "BookJournal",
-    "copyright": "Copyright © 2018 - 2020 Alex Seifert",
-    "appId": "com.alexseifert.bookjournal",
+    "productName": "Browser",
+    "copyright": "Copyright © 2020 Alex Seifert",
+    "appId": "com.alexseifert.browser",
     "buildDependenciesFromSource": true,
     "files": [
       "build"
@@ -58,7 +58,7 @@
       "icon": "build-resources/icon.ico"
     }
   },
-  "repository": "https://github.com/eiskalteschatten/BookJournal.git",
+  "repository": "https://github.com/eiskalteschatten/mwbrowser.git",
   "keywords": [],
   "author": {
     "name": "Alex Seifert",
@@ -97,31 +97,19 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-react": "^7.21.4",
     "husky": "^4.3.0",
-    "node-sass": "^4.14.1",
     "typescript": "^4.0.3",
     "wait-on": "^5.2.0"
   },
   "dependencies": {
     "bootstrap": "^4.5.2",
-    "chart.js": "^2.9.3",
     "clsx": "^1.1.1",
-    "colorthief": "^2.3.2",
-    "iso-639-1": "^2.1.4",
-    "mkdirp": "^1.0.4",
-    "moment": "^2.29.1",
     "react": "^16.13.1",
     "react-bootstrap": "^1.3.0",
     "react-dom": "^16.13.1",
-    "react-intl": "^5.8.6",
-    "react-jss": "^10.4.0",
     "react-redux": "^7.2.1",
     "react-scripts": "^3.4.3",
     "redux": "^4.0.5",
-    "redux-thunk": "^2.3.0",
-    "sequelize": "^6.3.5",
-    "sequelize-migration-wrapper": "^1.0.0",
-    "sqlite3": "^5.0.0",
-    "uuid": "^8.3.1"
+    "redux-thunk": "^2.3.0"
   },
   "husky": {
     "hooks": {
