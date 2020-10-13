@@ -1,0 +1,131 @@
+{
+  "name": "mwbrowser",
+  "version": "1.0.0",
+  "description": "An experiment with window handling in JavaScript.",
+  "main": "./public/electron.js",
+  "scripts": {
+    "build:react": "react-scripts build",
+    "build:electron": "tsc --project tsconfig.electron.json",
+    "prebuild": "npm run copyassets",
+    "build": "npm run build:react && npm run build:electron",
+    "copyassets": "node ./build-scripts/copyassets.js",
+    "prestart": "npm run copyassets && npm run build:electron",
+    "start": "concurrently \"BROWSER=none npm run start:react\" \"wait-on http://localhost:3000 && NODE_ENV=development electron .\"",
+    "start:react": "react-scripts start",
+    "test": "npm run lint",
+    "lint": "eslint './**/*.{tsx,ts,js}'",
+    "postinstall": "electron-builder install-app-deps",
+    "prepack": "npm run build",
+    "pack": "electron-builder --dir",
+    "pack:skipsigning": "CSC_IDENTITY_AUTO_DISCOVERY=false npm run pack",
+    "predist": "npm run build",
+    "dist": "electron-builder",
+    "dist:skipsigning": "CSC_IDENTITY_AUTO_DISCOVERY=false npm run dist",
+    "eject": "react-scripts eject"
+  },
+  "build": {
+    "productName": "BookJournal",
+    "copyright": "Copyright © 2018 - 2020 Alex Seifert",
+    "appId": "com.alexseifert.bookjournal",
+    "buildDependenciesFromSource": true,
+    "files": [
+      "build"
+    ],
+    "directories": {
+      "buildResources": "build-resources"
+    },
+    "mac": {
+      "target": [
+        "dmg"
+      ],
+      "category": "public.app-category.productivity",
+      "entitlements": "build-resources/entitlements.mac.plist",
+      "type": "development",
+      "darkModeSupport": true
+    },
+    "linux": {
+      "target": [
+        "deb",
+        "tar.gz"
+      ],
+      "category": "Office"
+    },
+    "win": {
+      "target": [
+        "nsis",
+        "portable"
+      ],
+      "icon": "build-resources/icon.ico"
+    }
+  },
+  "repository": "https://github.com/eiskalteschatten/BookJournal.git",
+  "keywords": [],
+  "author": {
+    "name": "Alex Seifert",
+    "email": "alex@alexseifert.com"
+  },
+  "homepage": "./",
+  "license": "",
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version"
+    ]
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.0.4",
+    "@testing-library/user-event": "^12.1.7",
+    "@types/electron-devtools-installer": "^2.2.0",
+    "@types/jest": "^26.0.14",
+    "@types/node": "^14.11.8",
+    "@types/react": "^16.9.52",
+    "@types/react-dom": "^16.9.8",
+    "@types/react-redux": "^7.1.9",
+    "@typescript-eslint/eslint-plugin": "^4.4.1",
+    "@typescript-eslint/parser": "^4.4.1",
+    "concurrently": "^5.3.0",
+    "copyfiles": "^2.4.0",
+    "electron": "^10.1.3",
+    "electron-builder": "^22.9.1",
+    "electron-devtools-installer": "^3.1.1",
+    "eslint": "^7.11.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-react": "^7.21.4",
+    "husky": "^4.3.0",
+    "node-sass": "^4.14.1",
+    "typescript": "^4.0.3",
+    "wait-on": "^5.2.0"
+  },
+  "dependencies": {
+    "bootstrap": "^4.5.2",
+    "chart.js": "^2.9.3",
+    "clsx": "^1.1.1",
+    "colorthief": "^2.3.2",
+    "iso-639-1": "^2.1.4",
+    "mkdirp": "^1.0.4",
+    "moment": "^2.29.1",
+    "react": "^16.13.1",
+    "react-bootstrap": "^1.3.0",
+    "react-dom": "^16.13.1",
+    "react-intl": "^5.8.6",
+    "react-jss": "^10.4.0",
+    "react-redux": "^7.2.1",
+    "react-scripts": "^3.4.3",
+    "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0",
+    "sequelize": "^6.3.5",
+    "sequelize-migration-wrapper": "^1.0.0",
+    "sqlite3": "^5.0.0",
+    "uuid": "^8.3.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "npm run lint"
+    }
+  }
+}
